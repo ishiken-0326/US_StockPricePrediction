@@ -75,3 +75,20 @@ MITライセンス化を優勝条件と定めておりますため、コンペ�
 - ひとまず予測して提出してみた(nb002)
   - train_data.csvの全てを学習データとしてラグ特徴量を作成して予測した
   - 課題：train_data.csvをtrain, validation, testに分割して学習をする
+  - score:0.04266	
+
+### 20211012
+- nb003
+  - 10週　14週の移動平均を追加
+    - score:0.04322
+      - ちょい悪くなった
+        - 説明変数の精査が必要？
+  - hold-outで学習データを分割
+    - score:0.04258	
+      - ちょい良くなった
+        - validationデータを用いたことでearly stopがかかって過学習が抑えられた？
+          - 分ける前は問答無用でnum_boost_round:50, 分けた後は          - 分ける前は問答無用でnum_boost_round:50, early_stoppingありでnum_boost_round=100 → 48でstop
+    - 分割の際に以下で混乱しかけたが、[これ](https://upura.hatenablog.com/entry/2018/12/04/205200)を見て整理した。後者で進める
+      - 学習データ(train_data.csv) → train, validation, testに分割する
+      - 学習データ(train_data.csv) → train, validationに分割しtestはコンペに提出するデータという形で分割する
+s
